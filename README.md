@@ -24,9 +24,14 @@
 ## Content
 
 - [Content](#content)
-- [Prerequisites](#prerequisites)
-  - [Windows](#windows)
 - [Installation](#installation)
+  - [Windows](#windows)
+  - [Unix](#unix)
+    - [Debian/Ubuntu](#apt)
+    - [Arch Linux/Manjaro](#pacman)
+    - [CentOS](#yum)
+    - [MacOS](#homebrew)
+- [Usage](#usage)
 - [Documentation](#documentation)
   - [Vector](#vector)
     - [Variables](#vector-variables)
@@ -38,18 +43,57 @@
 - [Contact](#contact)
 - [License](#license)
 
-## Prerequisites
+## Installation
 
 ### Windows
 
-Install **make** and **mingw**.
-
-## Installation
-
+* Install [Make](http://gnuwin32.sourceforge.net/packages/make.htm).
+* Install [MinGW](https://sourceforge.net/projects/mingw-w64/files/latest/download).
+* Run following command in the terminal:
 ```
 git clone "https://github.com/DeBos99/cvector.git"
 make -C cvector
 ```
+
+### Unix
+
+#### <a name="APT">Debian/Ubuntu based
+
+* Run following commands in the terminal:
+```
+sudo apt install git gcc -y
+git clone "https://github.com/DeBos99/cvector.git"
+make -C cvector
+```
+
+#### <a name="Pacman">Arch Linux/Manjaro
+
+* Run following commands in the terminal:
+```
+sudo pacman -S git gcc --noconfirm
+git clone "https://github.com/DeBos99/cvector.git"
+make -C cvector
+```
+
+#### <a name="YUM">CentOS
+
+* Run following commands in the terminal:
+```
+sudo yum install git gcc -y
+git clone "https://github.com/DeBos99/cvector.git"
+make -C cvector
+```
+
+#### <a name="Homebrew">MacOS
+
+* Run following commands in the terminal:
+```
+brew install git gcc
+git clone "https://github.com/DeBos99/cvector.git"
+make -C cvector
+```
+
+## Usage
 
 * Move **cvector** to your project directory
 * Add `#include "cvector/vector.h"` and `#include "cvector/vector_item.h"` to your source files
@@ -62,7 +106,7 @@ make -C cvector
 #### <a name="vector-variables">Variables
 
 | Variable           | Description                         |
-| :---               | :---                                |
+| :----------------- | :---------------------------------- |
 | VectorItem** items | Items in the vector.                |
 | size_t size        | Number of items in the vector.      |
 | size_t capacity    | Number of items the vector can fit. |
@@ -70,7 +114,7 @@ make -C cvector
 #### <a name="vector-methods">Methods
 
 | Method                                                    | Description                                                                               |
-| :---                                                      | :---                                                                                      |
+| :-------------------------------------------------------- | :---------------------------------------------------------------------------------------- |
 | Vector* Vector_new(VectorItem** items,size_t items_count) | Returns vector with **items_count** **items**.                                            |
 | Vector* Vector_dump(Vector* self)                         | Returns deep copy of **self**.                                                            |
 | void Vector_copy(Vector* destination,Vector* source)      | Deep copies **source** to **destination**.                                                |
@@ -88,14 +132,14 @@ make -C cvector
 #### <a name="vectoritem-variables">Variables
 
 | Variable    | Description        |
-| :---        | :---               |
+| :---------- | :----------------- |
 | void* value | Value of the item. |
 | size_t size | Size of the item.  |
 
 #### <a name="vectoritem-methods">Methods
 
 | Method                                                           | Description                                                            |
-| :---                                                             | :---                                                                   |
+| :--------------------------------------------------------------- | :--------------------------------------------------------------------- |
 | VectorItem* VectorItem_new(void* value,size_t size)              | Returns vector item with **value** of size **size**.                   |
 | VectorItem* VectorItem_dump(VectorItem* self)                    | Returns deep copy of **self**.                                         |
 | void VectorItem_copy(VectorItem* destination,VectorItem* source) | Deep copies **source** to **destination**.                             |
